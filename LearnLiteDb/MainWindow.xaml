@@ -1,0 +1,42 @@
+﻿<Window x:Class="LearnLiteDb.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LearnLiteDb"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="MainWindow" Height="350" Width="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid Name="dg" Height="300" Width="200" Grid.RowSpan="3" ItemsSource="{Binding Mode=OneWay}" SelectionChanged="dg_SelectionChanged" PreviewMouseDoubleClick="DataGridCell_PreviewMouseDown" Margin="14,10,17,9">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_PreviewMouseDown"></EventSetter>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+        <TextBox Name="txtName" Height="20" Width="150" Grid.Column="1"></TextBox>
+        <TextBox Name="txtPhone" Height="20" Width="150" Grid.Column="1" Grid.Row="1"></TextBox>
+        <CheckBox Name="cbActive" Height="50" Width="150" Grid.Column="1" Grid.Row="2" FontSize="14px" IsChecked="False">Active</CheckBox>
+        <Button Name="btnInsert" Height="50" Width="150" FontSize="24px" Grid.Column="2" Click="btnInsert_Click">Insert</Button>
+        <Button Name="btnDelete" Height="50" Width="150" FontSize="24px" Grid.Column="2" Grid.Row="2" Click="btnDelete_Click">Delete</Button>
+
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="btnUpdate" Height="50" Width="100" FontSize="24px" Grid.Column="1" Click="btnUpdate_Click">Update</Button>
+            <ComboBox Name="cbId" Height="50" Width="100" FontSize="24px" IsEditable="True" ItemsSource="{Binding}"/>
+        </Grid>
+    </Grid>
+</Window>
